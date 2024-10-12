@@ -8,23 +8,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Selamat Datang,"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="28dp"
-        android:textStyle="bold"
-        android:textSize="16dp"
+        android:fontFamily="@font/outfit_medium"
+        android:text="Selamat Datang,"
         android:textColor="#002649"
-        >
+        android:textSize="16dp"
+        android:textStyle="bold">
+
 
     </TextView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="28dp">
+        android:layout_marginLeft="16dp">
 
         <ImageView
             android:layout_width="17dp"
@@ -46,8 +48,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginRight="29dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/saldocard2"
         >
 
@@ -58,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="27dp"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/outfit_medium"
             android:text="UNSRI"
             android:textColor="#FFC727"
             android:textSize="25dp"
@@ -122,8 +125,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="73dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginRight="29dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         >
 
         <LinearLayout
@@ -204,9 +207,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="149dp"
-        android:layout_marginLeft="29dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="29dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/button1">
 
         <!-- ConstraintLayout for 'Pembayaran' Text and 'Lihat Semuanya' Button -->
@@ -406,10 +409,10 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="29dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:layout_marginRight="29dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/button1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
