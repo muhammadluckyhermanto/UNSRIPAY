@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.UNSRIPAY2" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Mengatur warna ripple effect secara global -->
+        <item name="colorPrimary">#24084E</item> <!-- black -->
+        <item name="colorPrimaryDark">#24084E</item> <!-- Ungu gelap -->
+        <item name="colorAccent">#03DAC5</item> <!-- Teal terang -->
+    </style>
+
+    <style name="Theme.UNSRIPAY2" parent="Base.Theme.UNSRIPAY2" >
+    </style>
+</resources>

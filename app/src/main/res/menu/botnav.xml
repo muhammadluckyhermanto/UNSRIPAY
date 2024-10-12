@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/homebot"
+        app:labelVisibilityMode="labeled"
+        android:title="Home" />
+    <item
+        android:id="@+id/navigation_lainnya"
+        android:icon="@drawable/lainnyabot"
+        app:labelVisibilityMode="labeled"
+        android:title="Lainnya"
+        />
+    <item
+        android:id="@+id/navigation_akademik"
+        android:icon="@drawable/akademikbot"
+        app:labelVisibilityMode="labeled"
+        android:title="Akdemik" />
+    <item
+        android:id="@+id/navigation_pesan"
+        android:icon="@drawable/pesanbot"
+        app:labelVisibilityMode="labeled"
+        android:title="Pesan" />
+    <item
+        android:id="@+id/navigation_akun"
+        android:icon="@drawable/akunbot"
+        app:labelVisibilityMode="labeled"
+        android:title="Akun" />
+</menu>
