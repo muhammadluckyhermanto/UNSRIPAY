@@ -234,11 +234,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
+                android:id="@+id/button_payment"
                 android:layout_width="130dp"
                 android:layout_height="24dp"
                 android:background="@drawable/bluebutton"
                 android:gravity="center"
                 android:orientation="horizontal"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -253,6 +256,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/seeall" />
             </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Button Section -->

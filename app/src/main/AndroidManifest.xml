@@ -15,7 +15,7 @@
 
         <!-- Activity PIN - Dijalankan saat aplikasi dimulai -->
         <activity
-            android:name="com.example.unsripaypin.PIN"
+            android:name="com.example.unsripaypin.PinActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +26,14 @@
         <!-- Activity Main -->
         <activity
             android:name="com.example.unsripay.MainActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.example.unsripay.PembayaranActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.example.unsripay.ScanQris"
             android:exported="true" />
 
         <meta-data
