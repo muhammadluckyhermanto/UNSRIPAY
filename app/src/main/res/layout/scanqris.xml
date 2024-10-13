@@ -1,0 +1,109 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:ignore="ExtraText">
+
+        <TextView
+            android:id="@+id/tvQrDetected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/outfit_medium"
+            android:text="Kode QR terdeteksi"
+            android:textColor="@color/blue"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <!-- gambar QR Code -->
+        <ImageView
+            android:id="@+id/qrCodeImageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/sampleqrcode"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="20dp" />
+
+        <!-- Teks Memproses... -->
+        <TextView
+            android:id="@+id/tvProcessing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/outfit_medium"
+            android:text="Memproses..."
+            android:textColor="@color/blue"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <!--tombol navigasi Galeri" samo Bantuan -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/darkerblue">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/ivGallery"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/home"/>
+
+            <TextView
+                android:id="@+id/tvGallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Galeri"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/ivHelp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/bantuan"
+            />
+
+            <TextView
+                android:id="@+id/tvHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bantuan"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
