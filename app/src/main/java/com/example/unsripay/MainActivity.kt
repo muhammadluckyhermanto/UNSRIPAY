@@ -1,7 +1,10 @@
 package com.example.unsripay
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -41,11 +44,37 @@ class MainActivity : AppCompatActivity() {
         }
 
         val buttonTransferActivity: LinearLayout = findViewById(R.id.button1)
-        buttonTransferActivity.setOnClickListener {
-            // Navigate to the QRIS page (QRISActivity)
-            val intent = Intent(this, TransferActivity::class.java)
-            startActivity(intent)
+
+// Load animasi scale
+        val scaleDown = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        val scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up)
+
+        buttonTransferActivity.setOnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    // Saat ditekan, apply scale down
+                    v.startAnimation(scaleDown)
+                }
+                MotionEvent.ACTION_UP -> {
+                    // Saat dilepas, apply scale up dan navigasi ke halaman lain
+                    v.startAnimation(scaleUp)
+
+                    // Menambahkan sedikit delay agar animasi selesai sebelum berpindah activity
+                    v.postDelayed({
+                        // Navigate to the QRIS page (TransferActivity)
+                        val intent = Intent(this, TransferActivity::class.java)
+                        startActivity(intent)
+                    }, 100) // 100ms untuk durasi animasi
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    // Saat aksi dibatalkan, apply scale up
+                    v.startAnimation(scaleUp)
+                }
+            }
+            true
         }
+
+
 
     }
 }
