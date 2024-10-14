@@ -39,5 +39,13 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ScanQris::class.java)
             startActivity(intent)
         }
+
+        val buttonTransferActivity: LinearLayout = findViewById(R.id.button1)
+        buttonTransferActivity.setOnClickListener {
+            // Navigate to the QRIS page (QRISActivity)
+            val intent = Intent(this, TransferActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

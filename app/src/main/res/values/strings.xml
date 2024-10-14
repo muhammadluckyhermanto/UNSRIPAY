@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">UNSRIPAY2</string>
+    <string name="app_name2">Opsi Trasnfer</string>
+    <string name="kirim"><b>Kirim</b></string>
+    <string name="pilih_tf"><b>Silakan pilih tujuan transfer</b></string>
+    <string name="tf_bank"><b>Transfer Bank</b></string>
+    <string name="tf_sesama"><b>Transfer Unsri Pay</b></string>
 </resources>
