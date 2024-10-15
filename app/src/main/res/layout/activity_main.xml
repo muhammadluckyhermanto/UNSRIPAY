@@ -459,6 +459,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/seeall" />
             </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Transaction History Table -->
