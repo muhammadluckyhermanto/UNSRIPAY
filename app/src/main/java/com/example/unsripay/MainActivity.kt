@@ -86,6 +86,8 @@ class MainActivity : AppCompatActivity() {
         setButtonAnimation(findViewById(R.id.button2), IsiSaldoActivity::class.java)
         setButtonAnimation(findViewById(R.id.button3), ScanQris::class.java)
         setButtonAnimation(findViewById(R.id.button4), RiwayatActivity::class.java)
+        setButtonAnimation(findViewById(R.id.button_payment), PembayaranActivity::class.java)
+
 
 
 
