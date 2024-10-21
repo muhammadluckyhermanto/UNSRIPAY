@@ -4,7 +4,10 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
+import android.view.View
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.view.animation.ScaleAnimation
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,55 +27,65 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Find the LinearLayout (acting as a button)
-        val buttonPayment: LinearLayout = findViewById(R.id.button_payment)
-
-        // Set up the OnClickListener
-        buttonPayment.setOnClickListener {
-            // Navigate to the payment page (PaymentActivity)
-            val intent = Intent(this, PembayaranActivity::class.java)
-            startActivity(intent)
+    // Animasi scale down (mengecil)
+        val scaleDown = ScaleAnimation(
+            1.0f, 0.9f,  // Start and end scale for X axis
+            1.0f, 0.9f,  // Start and end scale for Y axis
+            Animation.RELATIVE_TO_SELF, 0.5f,  // Pivot point X axis
+            Animation.RELATIVE_TO_SELF, 0.5f   // Pivot point Y axis
+        ).apply {
+            duration = 100 // Durasi animasi dalam milidetik
         }
 
-
-        // Set up OnClickListener for QRIS button
-        val buttonQRIS: LinearLayout = findViewById(R.id.button3)
-        buttonQRIS.setOnClickListener {
-            // Navigate to the QRIS page (QRISActivity)
-            val intent = Intent(this, ScanQris::class.java)
-            startActivity(intent)
+    // Animasi scale up (mengembalikan ukuran normal)
+        val scaleUp = ScaleAnimation(
+            0.9f, 1.0f,
+            0.9f, 1.0f,
+            Animation.RELATIVE_TO_SELF, 0.5f,
+            Animation.RELATIVE_TO_SELF, 0.5f
+        ).apply {
+            duration = 100
         }
 
-        val buttonTransferActivity: LinearLayout = findViewById(R.id.button1)
+        // Function to set the animation and onTouchListener for buttons
+        fun setButtonAnimation(button: View, targetActivity: Class<*>) {
+            button.setOnTouchListener { v, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        // Bersihkan animasi sebelumnya, lalu apply scale down
+                        v.clearAnimation()
+                        v.startAnimation(scaleDown)
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        // Apply scale up
+                        v.clearAnimation()
+                        v.startAnimation(scaleUp)
 
-// Load animasi scale
-        val scaleDown = AnimationUtils.loadAnimation(this, R.anim.scale_down)
-        val scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up)
-
-        buttonTransferActivity.setOnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    // Saat ditekan, apply scale down
-                    v.startAnimation(scaleDown)
+                        // Menghapus animasi setelah selesai untuk mengembalikan ke keadaan semula
+                        v.postDelayed({
+                            v.setAnimation(null)  // Menghapus animasi dari view
+                            // Navigate to the target activity
+                            val intent = Intent(this, targetActivity)
+                            startActivity(intent)
+                        }, 100) // 100ms untuk durasi animasi
+                    }
+                    MotionEvent.ACTION_CANCEL -> {
+                        // Bersihkan animasi sebelumnya, apply scale up, dan hapus animasi
+                        v.clearAnimation()
+                        v.startAnimation(scaleUp)
+                        v.setAnimation(null)  // Menghapus animasi dari view setelah dibatalkan
+                    }
                 }
-                MotionEvent.ACTION_UP -> {
-                    // Saat dilepas, apply scale up dan navigasi ke halaman lain
-                    v.startAnimation(scaleUp)
-
-                    // Menambahkan sedikit delay agar animasi selesai sebelum berpindah activity
-                    v.postDelayed({
-                        // Navigate to the QRIS page (TransferActivity)
-                        val intent = Intent(this, TransferActivity::class.java)
-                        startActivity(intent)
-                    }, 100) // 100ms untuk durasi animasi
-                }
-                MotionEvent.ACTION_CANCEL -> {
-                    // Saat aksi dibatalkan, apply scale up
-                    v.startAnimation(scaleUp)
-                }
+                true
             }
-            true
         }
+
+
+// Apply animation and navigation to all buttons
+        setButtonAnimation(findViewById(R.id.button1), TransferActivity::class.java)
+        setButtonAnimation(findViewById(R.id.button2), IsiSaldoActivity::class.java)
+        setButtonAnimation(findViewById(R.id.button3), ScanQris::class.java)
+        setButtonAnimation(findViewById(R.id.button4), RiwayatActivity::class.java)
 
 
 

@@ -7,7 +7,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="UNSRIPAY"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UNSRIPAY2"
@@ -15,7 +15,7 @@
 
         <!-- Activity PIN - Dijalankan saat aplikasi dimulai -->
         <activity
-            android:name="com.example.unsripaypin.PinActivity"
+            android:name="com.example.unsripay.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +38,18 @@
 
         <activity
             android:name="com.example.unsripay.TransferActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.example.unsripaypin.PinActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".RiwayatActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".IsiSaldoActivity"
             android:exported="true" />
 
         <meta-data
