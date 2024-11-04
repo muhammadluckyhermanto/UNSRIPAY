@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <Button
+                android:background="@drawable/kembali"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingTop="3dp"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
+                android:paddingBottom="3dp" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingTop="3dp"
+                android:paddingStart="13dp"
+                android:paddingEnd="10dp"
+                android:text="@string/kirim"
+                android:fontFamily="@font/outfit_medium"
+                android:textColor="@color/dark_purple"
+                android:textAlignment="textStart"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="228dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="@font/outfit_medium"
+            android:text="@string/pilih_tf"
+            android:textColor="@color/grey" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/bttn_bank"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bank"
+            android:paddingLeft="75dp"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toTopOf="@+id/bttn_sesama"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/bttn_sesama"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sesama"
+            android:paddingLeft="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bttn_bank" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:menu="@menu/botnav" />
+
+</LinearLayout>
