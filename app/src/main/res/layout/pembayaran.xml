@@ -16,7 +16,7 @@
         android:layout_height="50dp">
 
         <Button
-            android:layout_width="55dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/backbtn"
             android:backgroundTint="@color/blue"

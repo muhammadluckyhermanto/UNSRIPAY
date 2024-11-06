@@ -1,14 +1,11 @@
 package com.example.unsripay
 
-import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.view.animation.ScaleAnimation
-import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -87,9 +84,6 @@ class MainActivity : AppCompatActivity() {
         setButtonAnimation(findViewById(R.id.button3), ScanQris::class.java)
         setButtonAnimation(findViewById(R.id.button4), RiwayatActivity::class.java)
         setButtonAnimation(findViewById(R.id.button_payment), PembayaranActivity::class.java)
-
-
-
 
     }
 }
