@@ -1,13 +1,7 @@
 package com.example.unsripay
 
-import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.view.animation.ScaleAnimation
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,69 +21,23 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-    // Animasi scale down (mengecil)
-        val scaleDown = ScaleAnimation(
-            1.0f, 0.9f,  // Start and end scale for X axis
-            1.0f, 0.9f,  // Start and end scale for Y axis
-            Animation.RELATIVE_TO_SELF, 0.5f,  // Pivot point X axis
-            Animation.RELATIVE_TO_SELF, 0.5f   // Pivot point Y axis
-        ).apply {
-            duration = 100 // Durasi animasi dalam milidetik
-        }
+        // Find the LinearLayout (acting as a button)
+        val buttonPayment: LinearLayout = findViewById(R.id.button_payment)
 
-    // Animasi scale up (mengembalikan ukuran normal)
-        val scaleUp = ScaleAnimation(
-            0.9f, 1.0f,
-            0.9f, 1.0f,
-            Animation.RELATIVE_TO_SELF, 0.5f,
-            Animation.RELATIVE_TO_SELF, 0.5f
-        ).apply {
-            duration = 100
-        }
-
-        // Function to set the animation and onTouchListener for buttons
-        fun setButtonAnimation(button: View, targetActivity: Class<*>) {
-            button.setOnTouchListener { v, event ->
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        // Bersihkan animasi sebelumnya, lalu apply scale down
-                        v.clearAnimation()
-                        v.startAnimation(scaleDown)
-                    }
-                    MotionEvent.ACTION_UP -> {
-                        // Apply scale up
-                        v.clearAnimation()
-                        v.startAnimation(scaleUp)
-
-                        // Menghapus animasi setelah selesai untuk mengembalikan ke keadaan semula
-                        v.postDelayed({
-                            v.setAnimation(null)  // Menghapus animasi dari view
-                            // Navigate to the target activity
-                            val intent = Intent(this, targetActivity)
-                            startActivity(intent)
-                        }, 100) // 100ms untuk durasi animasi
-                    }
-                    MotionEvent.ACTION_CANCEL -> {
-                        // Bersihkan animasi sebelumnya, apply scale up, dan hapus animasi
-                        v.clearAnimation()
-                        v.startAnimation(scaleUp)
-                        v.setAnimation(null)  // Menghapus animasi dari view setelah dibatalkan
-                    }
-                }
-                true
-            }
+        // Set up the OnClickListener
+        buttonPayment.setOnClickListener {
+            // Navigate to the payment page (PaymentActivity)
+            val intent = Intent(this, PembayaranActivity::class.java)
+            startActivity(intent)
         }
 
 
-// Apply animation and navigation to all buttons
-        setButtonAnimation(findViewById(R.id.button1), TransferActivity::class.java)
-        setButtonAnimation(findViewById(R.id.button2), IsiSaldoActivity::class.java)
-        setButtonAnimation(findViewById(R.id.button3), ScanQris::class.java)
-        setButtonAnimation(findViewById(R.id.button4), RiwayatActivity::class.java)
-        setButtonAnimation(findViewById(R.id.button_payment), PembayaranActivity::class.java)
-
-
-
-
+        // Set up OnClickListener for QRIS button
+        val buttonQRIS: LinearLayout = findViewById(R.id.button3)
+        buttonQRIS.setOnClickListener {
+            // Navigate to the QRIS page (QRISActivity)
+            val intent = Intent(this, ScanQris::class.java)
+            startActivity(intent)
+        }
     }
 }
