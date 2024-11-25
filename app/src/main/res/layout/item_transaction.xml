@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <!-- Text untuk judul Transaksi -->
+    <TextView
+        android:id="@+id/tv_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transaksi"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <!-- Text untuk ID Transaksi (berada di bawah tv_transaction) -->
+    <TextView
+        android:id="@+id/tv_transaction_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID Transaksi"
+        android:textSize="14sp"
+        android:layout_below="@id/tv_transaction"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="4dp" />
+
+    <!-- Text untuk tanggal (berada di pojok kanan atas) -->
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tanggal"
+        android:textSize="14sp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true" />
+
+    <!-- Text untuk nominal (berada di bawah tanggal, di pojok kanan) -->
+    <TextView
+        android:id="@+id/tv_nominal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nominal"
+        android:textSize="14sp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/tv_date"
+        android:layout_marginTop="4dp" />
+</RelativeLayout>

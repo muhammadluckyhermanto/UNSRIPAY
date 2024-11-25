@@ -7,7 +7,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".PembayaranActivity">
     <LinearLayout
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:layout_height="50dp">
 
         <Button
-            android:layout_width="55dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/backbtn"
             android:backgroundTint="@color/blue"
@@ -82,7 +82,8 @@
             android:layout_marginLeft="18dp"
             android:layout_marginTop="4dp">
 
-                <Button
+            <Button
+                android:id="@+id/btn_ukt"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="25dp"
@@ -91,6 +92,7 @@
                 android:drawableTop="@drawable/book"></Button>
 
             <Button
+                android:id="@+id/btn_suliet"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="32dp"
@@ -100,6 +102,7 @@
                 android:drawableTop="@drawable/mustache"></Button>
 
             <Button
+                android:id="@+id/btn_yudisium"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="32dp"

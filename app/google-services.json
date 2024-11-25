@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "428823987772",
+    "project_id": "unsripay-5bf47",
+    "storage_bucket": "unsripay-5bf47.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428823987772:android:ad56695f7d434a4f5b6539",
+        "android_client_info": {
+          "package_name": "com.example.unsripay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2n3llJMj6GnMpIiwcajERWl8OvTIMJP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
