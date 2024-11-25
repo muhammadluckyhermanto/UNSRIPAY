@@ -41,7 +41,7 @@
             android:exported="true" />
 
         <activity
-            android:name="com.example.unsripaypin.PinActivity"
+            android:name="com.example.unsripay.PinActivity"
             android:exported="true" />
 
         <activity
@@ -51,6 +51,66 @@
         <activity
             android:name=".IsiSaldoActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".transferbank"
+            android:exported="true" />
+
+        <activity
+            android:name=".formtransferbank"
+            android:exported="true" />
+
+        <activity
+            android:name=".transferunsripay"
+            android:exported="true" />
+
+        <activity
+            android:name=".ukt"
+            android:exported="true" />
+
+        <activity
+            android:name=".suliet"
+            android:exported="true" />
+
+        <activity
+            android:name=".yudisium"
+            android:exported="true" />
+
+        <activity
+            android:name=".confirmukt"
+            android:exported="true" />
+
+        <activity
+            android:name=".confirmsuliet"
+            android:exported="true" />
+
+        <activity
+            android:name=".confirmyudisium"
+            android:exported="true" />
+
+        <activity
+            android:name=".pinbank"
+            android:exported="true" />
+
+        <activity
+            android:name=".detailtransaksi"
+            android:exported="true" />
+
+        <activity
+            android:name=".MainViewModel"
+            android:exported="true" />
+
+        <activity
+            android:name=".TransaksiAdapter"
+            android:exported="true" />
+
+        <activity
+            android:name=".DetailTransaksiActivity"
+            android:exported="true" />
+
+
+
+
 
         <meta-data
             android:name="preloaded_fonts"

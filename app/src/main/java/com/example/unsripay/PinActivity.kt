@@ -1,13 +1,12 @@
 package com.example.unsripay
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import android.content.Context
 import android.content.Intent
-import android.graphics.Color
+import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.*
+
 
 class PinActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var view01: View
@@ -16,40 +15,27 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var view04: View
     private lateinit var view05: View
     private lateinit var view06: View
-    private lateinit var btn01: Button
-    private lateinit var btn02: Button
-    private lateinit var btn03: Button
-    private lateinit var btn04: Button
-    private lateinit var btn05: Button
-    private lateinit var btn06: Button
-    private lateinit var btn07: Button
-    private lateinit var btn08: Button
-    private lateinit var btn09: Button
-    private lateinit var btn00: Button
-    private lateinit var btnOk: Button
-    private lateinit var btnHapus: Button
-
+    private lateinit var database: FirebaseDatabase
+    private lateinit var userRef: DatabaseReference
     private val numbersList = ArrayList<String>()
-    private var passCode = ""
-    private var num01: String = ""
-    private var num02: String = ""
-    private var num03: String = ""
-    private var num04: String = ""
-    private var num05: String = ""
-    private var num06: String = ""
+
+    data class User(
+        val iduser: Int = 0,
+        val nama: String = "",
+        val pin: Int = 0,
+        val saldo: Int = 0
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pin)
 
-        // Fullscreen layout (background sampai ke status bar)
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        // Inisialisasi Firebase
+        database = FirebaseDatabase.getInstance()
+        userRef = database.getReference("unsripay/user")
 
-        // Pastikan status bar transparan
-        window.statusBarColor = Color.TRANSPARENT
         initializeComponents()
     }
-
 
     private fun initializeComponents() {
         view01 = findViewById(R.id.view_01)
@@ -59,31 +45,19 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
         view05 = findViewById(R.id.view_05)
         view06 = findViewById(R.id.view_06)
 
-        btn01 = findViewById(R.id.btn_01)
-        btn02 = findViewById(R.id.btn_02)
-        btn03 = findViewById(R.id.btn_03)
-        btn04 = findViewById(R.id.btn_04)
-        btn05 = findViewById(R.id.btn_05)
-        btn06 = findViewById(R.id.btn_06)
-        btn07 = findViewById(R.id.btn_07)
-        btn08 = findViewById(R.id.btn_08)
-        btn09 = findViewById(R.id.btn_09)
-        btn00 = findViewById(R.id.btn_00)
-        btnOk = findViewById(R.id.btn_Ok)
-        btnHapus = findViewById(R.id.btn_Hapus)
-
-        btn01.setOnClickListener(this)
-        btn02.setOnClickListener(this)
-        btn03.setOnClickListener(this)
-        btn04.setOnClickListener(this)
-        btn05.setOnClickListener(this)
-        btn06.setOnClickListener(this)
-        btn07.setOnClickListener(this)
-        btn08.setOnClickListener(this)
-        btn09.setOnClickListener(this)
-        btn00.setOnClickListener(this)
-        btnOk.setOnClickListener(this)
-        btnHapus.setOnClickListener(this)
+        // Setup button listeners
+        findViewById<View>(R.id.btn_01).setOnClickListener(this)
+        findViewById<View>(R.id.btn_02).setOnClickListener(this)
+        findViewById<View>(R.id.btn_03).setOnClickListener(this)
+        findViewById<View>(R.id.btn_04).setOnClickListener(this)
+        findViewById<View>(R.id.btn_05).setOnClickListener(this)
+        findViewById<View>(R.id.btn_06).setOnClickListener(this)
+        findViewById<View>(R.id.btn_07).setOnClickListener(this)
+        findViewById<View>(R.id.btn_08).setOnClickListener(this)
+        findViewById<View>(R.id.btn_09).setOnClickListener(this)
+        findViewById<View>(R.id.btn_00).setOnClickListener(this)
+        findViewById<View>(R.id.btn_Ok).setOnClickListener(this)
+        findViewById<View>(R.id.btn_Hapus).setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -99,12 +73,9 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_09 -> handleNumberClick("9")
             R.id.btn_00 -> handleNumberClick("0")
             R.id.btn_Ok -> {
-                // Pastikan bahwa PIN yang dimasukkan sudah lengkap (6 digit)
                 if (numbersList.size == 6) {
-                    // Lanjut ke MainActivity
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish() // Untuk menutup activity PIN saat berpindah
+                    val pin = numbersList.joinToString("")
+                    validatePinAndLogin(pin)
                 } else {
                     Toast.makeText(this, "Masukkan 6 digit PIN", Toast.LENGTH_SHORT).show()
                 }
@@ -112,7 +83,6 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_Hapus -> handleDeleteClick()
         }
     }
-
 
     private fun handleNumberClick(number: String) {
         if (numbersList.size < 6) {
@@ -129,43 +99,43 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun updatePassCodeView() {
-        when (numbersList.size) {
-            0 -> resetPassCodeView()
-            1 -> view01.setBackgroundResource(R.drawable.bg_view_blue_oval)
-            2 -> view02.setBackgroundResource(R.drawable.bg_view_blue_oval)
-            3 -> view03.setBackgroundResource(R.drawable.bg_view_blue_oval)
-            4 -> view04.setBackgroundResource(R.drawable.bg_view_blue_oval)
-            5 -> view05.setBackgroundResource(R.drawable.bg_view_blue_oval)
-            6 -> view06.setBackgroundResource(R.drawable.bg_view_blue_oval)
+        val dots = listOf(view01, view02, view03, view04, view05, view06)
+        for (i in dots.indices) {
+            if (i < numbersList.size) {
+                dots[i].setBackgroundResource(R.drawable.bg_view_blue_oval)
+            } else {
+                dots[i].setBackgroundResource(R.drawable.bg_view_grey_oval)
+            }
         }
     }
 
-    private fun resetPassCodeView() {
-        view01.setBackgroundResource(R.drawable.bg_view_grey_oval)
-        view02.setBackgroundResource(R.drawable.bg_view_grey_oval)
-        view03.setBackgroundResource(R.drawable.bg_view_grey_oval)
-        view04.setBackgroundResource(R.drawable.bg_view_grey_oval)
-        view05.setBackgroundResource(R.drawable.bg_view_grey_oval)
-        view06.setBackgroundResource(R.drawable.bg_view_grey_oval)
-    }
+    private fun validatePinAndLogin(pin: String) {
+        userRef.orderByChild("pin").equalTo(pin.toDouble()).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    val user = snapshot.children.first().getValue(User::class.java)
+                    user?.let {
+                        // Simpan userId ke SharedPreferences
+                        val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        editor.putInt("userId", it.iduser)
+                        editor.apply()
 
-    private fun matchPassCode() {
-        if (getPassCode() == passCode) {
-            startActivity(Intent(this, MainActivity::class.java))
-        } else {
-            Toast.makeText(this, "PIN SALAH!!", Toast.LENGTH_SHORT).show()
-        }
-    }
+                        // Pindah ke halaman utama
+                        val intent = Intent(this@PinActivity, MainActivity::class.java)
+                        intent.putExtra("userName", it.nama)
+                        intent.putExtra("userSaldo", it.saldo)
+                        startActivity(intent)
+                        finish()
+                    }
+                } else {
+                    Toast.makeText(this@PinActivity, "PIN salah!", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-    private fun savePassCode(passCode: String) {
-        val preferences = getSharedPreferences("passcode_pref", Context.MODE_PRIVATE)
-        val editor = preferences.edit()
-        editor.putString("passcode", passCode)
-        editor.apply()
-    }
-
-    private fun getPassCode(): String {
-        val preferences = getSharedPreferences("passcode_pref", Context.MODE_PRIVATE)
-        return preferences.getString("passcode", "") ?: ""
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@PinActivity, "Terjadi kesalahan, coba lagi.", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

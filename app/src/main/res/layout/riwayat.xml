@@ -1,19 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:background="@drawable/backround"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RiwayatActivity"
-    >
-    <TextView
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="8dp">
+
+        <!-- Tombol Filter -->
+        <Button
+            android:id="@+id/btn_filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_border"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:text="Filter" />
+
+        <!-- Tombol Hapus Filter -->
+        <Button
+            android:id="@+id/btn_clear_filter"
+            android:layout_width="0dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/rounded_border"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hapus Filter" />
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="40dp"
-        android:text="ini riwayat">
-    </TextView>
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
 </LinearLayout>

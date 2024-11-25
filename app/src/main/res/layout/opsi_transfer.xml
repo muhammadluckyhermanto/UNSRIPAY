@@ -1,107 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/TransferActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".TransferActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:orientation="vertical">
+    <!-- Header Section -->
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kembali"
+        android:layout_marginTop="30dp"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp">
-
-            <Button
-                android:background="@drawable/kembali"
-                android:layout_width="56dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingTop="3dp"
-                android:paddingLeft="9dp"
-                android:paddingRight="9dp"
-                android:paddingBottom="3dp" />
-
-            <TextView
-                android:layout_width="85dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingTop="3dp"
-                android:paddingStart="13dp"
-                android:paddingEnd="10dp"
-                android:text="@string/kirim"
-                android:fontFamily="@font/outfit_medium"
-                android:textColor="@color/dark_purple"
-                android:textAlignment="textStart"
-                android:textSize="25sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="228dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:fontFamily="@font/outfit_medium"
-            android:text="@string/pilih_tf"
-            android:textColor="@color/grey" />
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:id="@+id/bttn_bank"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bank"
-            android:paddingLeft="75dp"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toTopOf="@+id/bttn_sesama"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:id="@+id/bttn_sesama"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/sesama"
-            android:paddingLeft="80dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bttn_bank" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-    <LinearLayout
-        android:layout_weight="1"
+    <TextView
+        android:id="@+id/header_text"
         android:layout_width="wrap_content"
-        android:layout_height="0dp" />
+        android:layout_height="wrap_content"
+        android:text="@string/kirim"
+        android:fontFamily="@font/outfit_medium"
+        android:textColor="@color/dark_purple"
+        android:textSize="25sp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/back_button"
+        app:layout_constraintTop_toTopOf="@id/back_button"
+        app:layout_constraintBottom_toBottomOf="@id/back_button" />
 
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/subtitle_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/pilih_tf"
+        android:textSize="16sp"
+        android:fontFamily="@font/outfit_medium"
+        android:textColor="@color/grey"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/header_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Bank Transfer Button -->
+    <LinearLayout
+        android:id="@+id/bttn_bank"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:background="@drawable/bank"
+        android:orientation="vertical"
+        android:paddingLeft="75dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/subtitle_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Sesama Transfer Button -->
+    <LinearLayout
+        android:id="@+id/bttn_sesama"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:background="@drawable/sesama"
+        android:orientation="vertical"
+        android:paddingLeft="80dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/bttn_bank"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:menu="@menu/botnav" />
+        app:menu="@menu/botnav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
