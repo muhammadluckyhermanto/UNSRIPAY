@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
+import com.example.unsripay.utils.CurrencyUtils // Import CurrencyUtils
 
 class detailtransaksi : AppCompatActivity() {
 
@@ -37,6 +38,7 @@ class detailtransaksi : AppCompatActivity() {
         val tvMetode = findViewById<TextView>(R.id.tv_metode)
         val tvNomorTujuan = findViewById<TextView>(R.id.tv_nomortujuan)
         val tvNominal = findViewById<TextView>(R.id.tv_nominal)
+        val tvNominaltop = findViewById<TextView>(R.id.tv_nominaltop)
         val tvTimestamp = findViewById<TextView>(R.id.tv_timestamp)
         val btnKembali = findViewById<Button>(R.id.btn_kembali)
 
@@ -46,15 +48,16 @@ class detailtransaksi : AppCompatActivity() {
                 if (snapshot.exists()) {
                     val metode = snapshot.child("metode").value.toString()
                     val nomorTujuan = snapshot.child("nomortujuan").value.toString()
-                    val nominal = snapshot.child("nominal").value.toString()
+                    val nominal = snapshot.child("nominal").value.toString().toIntOrNull() ?: 0
                     val timestamp = snapshot.child("timestamp").value.toString()
 
                     // Menampilkan detail transaksi
-                    tvTransaksiId.text = "ID Transaksi: $transaksiId"
-                    tvMetode.text = "Pembayaran: $metode"
-                    tvNomorTujuan.text = "Nomor Tujuan: $nomorTujuan"
-                    tvNominal.text = "Nominal: Rp$nominal"
-                    tvTimestamp.text = "Tanggal Transaksi: $timestamp"
+                    tvTransaksiId.text = "$transaksiId"
+                    tvMetode.text = metode
+                    tvNomorTujuan.text = nomorTujuan
+                    tvNominal.text = CurrencyUtils.formatRupiah(nominal) // Memformat nominal
+                    tvNominaltop.text = CurrencyUtils.formatRupiah(nominal) // Memformat nominal
+                    tvTimestamp.text = timestamp
                 }
             }.addOnFailureListener {
                 Toast.makeText(this, "Gagal mengambil data transaksi", Toast.LENGTH_SHORT).show()
@@ -99,6 +102,4 @@ class detailtransaksi : AppCompatActivity() {
             Toast.makeText(this, "Terjadi kesalahan saat mengakses data pengguna", Toast.LENGTH_SHORT).show()
         }
     }
-
 }
-

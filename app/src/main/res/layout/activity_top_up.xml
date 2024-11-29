@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header Section -->
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Back Button -->
+        <Button
+            android:id="@+id/backbutton"
+            android:layout_width="60dp"
+            android:layout_height="55dp"
+            android:background="@drawable/mixed_corner_button"
+            android:backgroundTint="@color/darkerblue"
+            android:contentDescription="Kembali ke halaman sebelumnya"
+            android:drawableTop="@drawable/backbtn" />
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:text="Indomaret"
+            android:textColor="@color/navy"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Background Oval -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="695dp"
+        android:layout_marginTop="116dp"
+        android:background="@drawable/topup"
+        app:layout_constraintTop_toBottomOf="@id/header_layout" />
+
+    <!-- Card Input Section -->
+    <LinearLayout
+        android:id="@+id/card_input_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/bgtop"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/header_layout">
+
+        <!-- Judul -->
+        <TextView
+            android:id="@+id/judul_isi_saldo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Jumlah Isi Saldo"
+            android:textColor="@color/darkerblue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Input Jumlah Saldo -->
+        <EditText
+            android:id="@+id/input_saldo"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bgtop"
+            android:hint="Rp0"
+            android:inputType="number"
+            android:padding="12dp"
+            android:textColor="@color/darkerblue"
+            android:textSize="18sp" />
+
+        <!-- Biaya Admin -->
+        <TextView
+            android:id="@+id/biaya_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text=""
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Tombol Lanjut -->
+    <Button
+        android:id="@+id/btn_lanjut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/rounded_border"
+        android:text="Lanjut"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/card_input_section" />
+
+    <!-- Instruction Section -->
+    <LinearLayout
+        android:id="@+id/instruction_section"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bgtop"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_lanjut">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/title_instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Cara isi Saldo UNSRI Pay di Indomaret"
+            android:textColor="@color/darkerblue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Instruction 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ppl"
+                android:contentDescription="Instruction Icon 1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tentukan jumlah isi saldo"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+
+        <!-- Instruction 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ppl"
+                android:contentDescription="Instruction Icon 2" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tunjukkan kode pembayaran ke kasir"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+
+        <!-- Instruction 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ppl"
+                android:contentDescription="Instruction Icon 3" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Saldo akan diterima maks. 24 jam"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Bottom Navigation -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

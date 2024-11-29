@@ -1,51 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/backgroundtransaksi"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tv_transaksiId"
-        android:layout_width="wrap_content"
+    <!-- Header Section -->
+    <LinearLayout
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ID Transaksi: "
-        android:textSize="16sp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:contentDescription="Logo"
+                android:src="@drawable/unsripaylogo" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Transaction Amount -->
+    <TextView
+        android:id="@+id/tv_nominaltop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=""
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="#3470A2" />
 
     <TextView
-        android:id="@+id/tv_metode"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Metode Pembayaran: "
-        android:textSize="16sp" />
+        android:gravity="center"
+        android:text="Transaksi"
+        android:textSize="16sp"
+        android:textColor="#3470A2" />
 
-    <TextView
-        android:id="@+id/tv_nomortujuan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nomor Tujuan: "
-        android:textSize="16sp" />
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="16dp"
+        android:background="#3470A2" />
 
-    <TextView
-        android:id="@+id/tv_nominal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nominal: "
-        android:textSize="16sp" />
+    <!-- Transaction Details -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_timestamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tanggal Transaksi: "
-        android:textSize="16sp" />
+        <!-- ID Transaksi -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="4dp">
 
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ID Transaksi"
+                android:textColor="#3470A2"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_transaksiId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:textColor="#3470A2" />
+        </LinearLayout>
+
+        <!-- Metode Pembayaran -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Metode Pembayaran"
+                android:textColor="#3470A2"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_metode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:textColor="#3470A2" />
+        </LinearLayout>
+
+        <!-- Nomor Tujuan -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nomor Tujuan"
+                android:textColor="#3470A2"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_nomortujuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:textColor="#3470A2" />
+        </LinearLayout>
+
+        <!-- Nominal -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nominal"
+                android:textColor="#3470A2"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_nominal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:textColor="#3470A2" />
+        </LinearLayout>
+
+        <!-- Tanggal Transaksi -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tanggal Transaksi"
+                android:textColor="#3470A2"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:textColor="#3470A2" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:background="#3470A2" />
+    </LinearLayout>
+
+    <!-- Divider -->
+
+    <!-- Return Button -->
     <Button
         android:id="@+id/btn_kembali"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_border"
-        android:text="Kembali ke Beranda"
-        android:layout_marginTop="20dp" />
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/darkerblue"
+        android:text="Kembali"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 </LinearLayout>

@@ -15,9 +15,16 @@ class ukt : AppCompatActivity() {
     private lateinit var btnLanjut: Button
     private lateinit var databaseReference: DatabaseReference
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ukt)
+
+        // Fungsi untuk tombol kembali
+        val backButton = findViewById<Button>(R.id.backbutton)
+        backButton.setOnClickListener {
+            finish() // Menutup activity ini
+        }
 
         nimInput = findViewById(R.id.nim_input)
         btnLanjut = findViewById(R.id.btn_lanjut)
@@ -31,6 +38,8 @@ class ukt : AppCompatActivity() {
             }
         }
     }
+
+
 
     private fun fetchDataAndNavigate(nim: String) {
         // Akses database Firebase

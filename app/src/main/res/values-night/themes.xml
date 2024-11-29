@@ -4,6 +4,8 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <!-- Mengatur warna ripple effect secara global -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="colorPrimary">#48ACFF</item>
         <item name="colorSecondary">#FDD051</item>
         <item name="android:textColorPrimary">#143C5E</item>
