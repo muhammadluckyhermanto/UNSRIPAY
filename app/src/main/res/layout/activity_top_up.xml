@@ -77,18 +77,11 @@
             android:hint="Rp0"
             android:inputType="number"
             android:padding="12dp"
+            android:layout_marginBottom="30dp"
             android:textColor="@color/darkerblue"
             android:textSize="18sp" />
 
-        <!-- Biaya Admin -->
-        <TextView
-            android:id="@+id/biaya_admin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text=""
-            android:textColor="@color/gray"
-            android:textSize="12sp" />
+
     </LinearLayout>
 
     <!-- Tombol Lanjut -->
