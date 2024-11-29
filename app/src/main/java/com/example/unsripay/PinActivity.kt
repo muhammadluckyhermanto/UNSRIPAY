@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.google.firebase.database.*
 
 
@@ -22,13 +25,28 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
     data class User(
         val iduser: Int = 0,
         val nama: String = "",
-        val pin: Int = 0,
+        val pin: String = "",
         val saldo: Int = 0
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pin)
+
+        // Membuat status bar transparan
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                )
+        window.statusBarColor = android.graphics.Color.TRANSPARENT
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true // Teks status bar terang
+
+        // Menangani window insets untuk tampilan edge-to-edge
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         // Inisialisasi Firebase
         database = FirebaseDatabase.getInstance()
@@ -110,7 +128,7 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun validatePinAndLogin(pin: String) {
-        userRef.orderByChild("pin").equalTo(pin.toDouble()).addListenerForSingleValueEvent(object : ValueEventListener {
+        userRef.orderByChild("pin").equalTo(pin).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val user = snapshot.children.first().getValue(User::class.java)
@@ -138,4 +156,5 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
             }
         })
     }
+
 }

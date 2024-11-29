@@ -3,37 +3,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@drawable/backgroundtransaksi"
+    >
+
+    <LinearLayout
+        android:id="@+id/topcomu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        >
+
+        <Button
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mixed_corner_button"
+            android:backgroundTint="@color/blue"
+            android:drawableTop="@drawable/backbtn"
+            android:text="Kembali"
+            android:contentDescription="Kembali ke halaman sebelumnya"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Riwayat Transaksi"
+            android:textColor="@color/navy"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:orientation="horizontal">
 
         <!-- Tombol Filter -->
         <Button
             android:id="@+id/btn_filter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_border"
-            android:layout_weight="1"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border"
             android:text="Filter" />
 
         <!-- Tombol Hapus Filter -->
         <Button
             android:id="@+id/btn_clear_filter"
             android:layout_width="0dp"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/rounded_border"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="16dp"
             android:layout_weight="1"
+            android:background="@drawable/rounded_border"
             android:text="Hapus Filter" />
     </LinearLayout>
 
-
     <ListView
+        android:layout_margin="20dp"
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

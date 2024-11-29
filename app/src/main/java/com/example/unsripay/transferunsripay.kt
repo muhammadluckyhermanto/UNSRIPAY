@@ -18,6 +18,12 @@ class transferunsripay : AppCompatActivity() {
         val etAmount = findViewById<EditText>(R.id.etAmount)
         val btnConfirmTransfer = findViewById<Button>(R.id.btnConfirmTransfer)
 
+        // Fungsi untuk tombol kembali
+        val backButton = findViewById<Button>(R.id.backbutton)
+        backButton.setOnClickListener {
+            finish() // Menutup activity ini
+        }
+
         // Mengambil data dari Intent
         val selectedBank = intent.getStringExtra("selectedBank") ?: "UnsriPAY"
 

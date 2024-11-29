@@ -21,6 +21,12 @@ class suliet : AppCompatActivity() {
         nimInput = findViewById(R.id.nim_input)
         btnLanjut = findViewById(R.id.btn_lanjut)
 
+        // Fungsi untuk tombol kembali
+        val backButton = findViewById<Button>(R.id.backbutton)
+        backButton.setOnClickListener {
+            finish() // Menutup activity ini
+        }
+
         btnLanjut.setOnClickListener {
             val nim = nimInput.text.toString()
             if (nim.isEmpty()) {

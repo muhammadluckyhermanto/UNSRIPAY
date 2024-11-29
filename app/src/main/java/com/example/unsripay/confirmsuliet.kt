@@ -20,6 +20,12 @@ class confirmsuliet : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.confirmsuliet)
 
+        // Fungsi untuk tombol kembali
+        val backButton = findViewById<Button>(R.id.backbutton)
+        backButton.setOnClickListener {
+            finish() // Menutup activity ini
+        }
+
         // Inisialisasi View
         nimText = findViewById(R.id.nimText)
         namaText = findViewById(R.id.namaText)

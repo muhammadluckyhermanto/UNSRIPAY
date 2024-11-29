@@ -49,10 +49,6 @@
             android:exported="true" />
 
         <activity
-            android:name=".IsiSaldoActivity"
-            android:exported="true" />
-
-        <activity
             android:name=".transferbank"
             android:exported="true" />
 
@@ -101,15 +97,20 @@
             android:exported="true" />
 
         <activity
-            android:name=".TransaksiAdapter"
+            android:name=".TransactionAdapter"
             android:exported="true" />
 
         <activity
-            android:name=".DetailTransaksiActivity"
+            android:name=".Topup"
             android:exported="true" />
 
+        <activity
+            android:name=".TopUpActivity"
+            android:exported="true" />
 
-
+        <activity
+            android:name=".ConfirmTopUpActivity"
+            android:exported="true" />
 
 
         <meta-data
