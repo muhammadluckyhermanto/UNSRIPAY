@@ -30,6 +30,12 @@ class RiwayatActivity : AppCompatActivity() {
         clearFilterButton = findViewById(R.id.btn_clear_filter)
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
+        // Tombol kembali
+        val backButton = findViewById<Button>(R.id.backbutton)
+        backButton.setOnClickListener {
+            finish() // Menutup activity ini
+        }
+
         // Ambil ID user dari SharedPreferences
         val userId = sharedPreferences.getInt("userId", -1)
 
