@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/back"
+            android:id="@+id/backbutton"
             android:layout_width="60dp"
             android:layout_height="55dp"
             android:background="@drawable/mixed_corner_button"

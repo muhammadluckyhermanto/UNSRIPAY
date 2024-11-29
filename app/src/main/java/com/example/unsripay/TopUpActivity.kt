@@ -16,35 +16,58 @@ class TopUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_top_up)
 
-        // Fungsi untuk tombol kembali
-        val backButton = findViewById<Button>(R.id.backbutton)
-        backButton.setOnClickListener {
-            finish() // Menutup activity ini
-        }
-
         // Inisialisasi Views
         nominalInput = findViewById(R.id.input_saldo)
         btnLanjut = findViewById(R.id.btn_lanjut)
 
-        // Listener Tombol Lanjut
-        btnLanjut.setOnClickListener {
-            val nominalStr = nominalInput.text.toString()
-
-            if (nominalStr.isNotEmpty() && nominalStr.matches(Regex("\\d+"))) {
-                val nominal = nominalStr.toIntOrNull()
-
-                if (nominal != null && nominal > 0) {
-                    val intent = Intent(this, ConfirmTopUpActivity::class.java)
-                    intent.putExtra("nominal", nominal)
-                    intent.putExtra("metode", "Top Up Saldo")
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this, "Masukkan jumlah yang valid!", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                Toast.makeText(this, "Kolom jumlah tidak boleh kosong atau tidak valid!", Toast.LENGTH_SHORT).show()
-            }
+        // Tombol Kembali
+        val backButton = findViewById<Button>(R.id.backbutton)
+        backButton.setOnClickListener {
+            finish() // Menutup activity dan kembali ke activity sebelumnya
         }
 
+        // Tombol Lanjut
+        btnLanjut.setOnClickListener {
+            handleTopUp()
+        }
+    }
+
+    /**
+     * Fungsi untuk menangani proses top up.
+     */
+    private fun handleTopUp() {
+        val nominalStr = nominalInput.text.toString().trim() // Menghapus spasi di awal/akhir
+
+        // Validasi input nominal
+        if (nominalStr.isEmpty()) {
+            showToast("Kolom jumlah tidak boleh kosong!")
+            return
+        }
+
+        if (!nominalStr.matches(Regex("\\d+"))) {
+            showToast("Masukkan jumlah yang valid!")
+            return
+        }
+
+        val nominal = nominalStr.toIntOrNull()
+
+        if (nominal == null || nominal <= 0) {
+            showToast("Masukkan jumlah yang valid dan lebih besar dari nol!")
+            return
+        }
+
+        // Melanjutkan ke activity berikutnya jika validasi lolos
+        val intent = Intent(this, ConfirmTopUpActivity::class.java).apply {
+            putExtra("nominal", nominal)
+            putExtra("metode", "Top Up Saldo")
+        }
+        startActivity(intent)
+    }
+
+    /**
+     * Menampilkan pesan toast dengan teks tertentu.
+     */
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
